@@ -9,7 +9,7 @@ def calculate():
     times = theEntry.get()
     times = int(times)
 
-    if times > 1000000:
+    if times > 100000:
         outputHeads.set("Sorry! Number too high...")
     elif times < 0:
         outputHeads.set("Don't put in negative values!")
