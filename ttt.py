@@ -1,35 +1,23 @@
 from Tkinter import *
 
-# PARAMETERS
-# graphics
-WINDOW_SIZE = 600 # pixels
-GRID_LINE_WIDTH = 2 # pixels
-SYMBOL_WIDTH = WINDOW_SIZE/12 # pixels - adjust ratio
-
-# 0-1 : size of a symbol relative to it's cell
-# bigger than 1 is too much
+#Declare all my parameters as global variables
+WINDOW_SIZE = 600
+GRID_LINE_WIDTH = 2
+SYMBOL_WIDTH = WINDOW_SIZE / 12
 SYMBOL_SIZE = 0.5
-
+CELL_SIZE = WINDOW_SIZE / 3
+#Prettification of our app
 X_COLOR = 'dodger blue'
 O_COLOR = 'tomato'
-# background color of the 'draw' gameover screen
 DRAW_SCREEN_COLOR = 'light sea green'
 GRID_COLOR = 'light grey'
 BG_COLOR = 'white'
-
-# gameplay
-FIRST_PLAYER = 2 # 1 - X, 2 = O
-
-# OTHER
-CELL_SIZE = WINDOW_SIZE / 3
-
-# game states
+#Keep track of game states
 STATE_TITLE_SCREEN = 0
 STATE_X_TURN = 1
 STATE_O_TURN = 2
 STATE_GAME_OVER = 3
-
-# symbol notation in the board memory
+FIRST_PLAYER = 2
 EMPTY = 0
 X = 1
 O = 2
@@ -151,7 +139,6 @@ class Game(Tk):
     def click(self, event):
         """
         Handles most of the game logic
-        I probably should move it elswhere but it's pretty short
         """
 
         x = self.ptgrid(event.x)
@@ -161,8 +148,6 @@ class Game(Tk):
             self.new_board()
             self.gamestate = FIRST_PLAYER
 
-
-        #duplication /!\
         elif (self.gamestate == STATE_X_TURN and
                 self.board[y][x] == EMPTY):
             self.new_move(X, x, y)
@@ -209,7 +194,6 @@ class Game(Tk):
         2  | |
 
         """
-        #duplication /!\
         if player == X:
             self.draw_X(grid_x, grid_y)
             self.board[grid_y][grid_x] = X
