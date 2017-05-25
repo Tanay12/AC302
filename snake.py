@@ -1,6 +1,6 @@
 import random
 import string
-import Tkinter
+from Tkinter import *
 
 HEAD_CHARACTER = 'O'
 FOOD_CHARACTERS = string.ascii_letters
@@ -27,11 +27,11 @@ class Application:
     def init(self):
         self.master.title(self.TITLE)
 
-        self.canvas = Tkinter.Canvas(self.master)
-        self.canvas.grid(sticky=Tkinter.NSEW)
+        self.canvas = Canvas(self.master)
+        self.canvas.grid(sticky=NSEW)
 
-        self.start_button = Tkinter.Button(self.master, text='Start', command=self.on_start)
-        self.start_button.grid(sticky=Tkinter.EW)
+        self.start_button = Button(self.master, text='Start', command=self.on_start)
+        self.start_button.grid(sticky=EW)
 
         self.master.bind('w', self.on_up)
         self.master.bind('a', self.on_left)
@@ -56,7 +56,7 @@ class Application:
     def reset(self):
         del self.segments[:]
         del self.segment_positions[:]
-        self.canvas.delete(Tkinter.ALL)
+        self.canvas.delete(ALL)
 
     def start(self):
         width = self.canvas.winfo_width()
@@ -155,7 +155,7 @@ class Application:
 
 
 def main():
-    root = Tkinter.Tk()
+    root = Tk()
     Application(root)
     root.mainloop()
 
