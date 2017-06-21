@@ -121,8 +121,22 @@ class Application:
         self.canvas.coords(self.head, head_position)
         self.moved = True
 
+        speed = 100
+
+        if len(self.segments) > 5:
+            speed = 75
+
+        if len(self.segments) > 10:
+            speed = 60
+
+        if len(self.segments) > 20:
+            speed = 45
+
         if self.running:
-            self.canvas.after(50, self.tick)
+            self.canvas.after(speed, self.tick)
+
+        display_speed = 10000 / speed
+        self.start_button.configure(text='Your speed is %d' % display_speed)
 
     def game_over(self):
         width = self.canvas.winfo_width()

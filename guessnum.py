@@ -1,13 +1,8 @@
-# Guess my number game
-# User must attempt to guess randomly selected number within a range in fewest possible attempts
-
-from Tkinter import *
 import random
+from Tkinter import *
 
 class Application(Frame):
-    #A GUI application which which generates random number and gets user input
-
-    def __init__(self, master): #initialize newly created Application object
+    def __init__(self, master):
         Frame.__init__(self, master)
         self.grid()
         self.create_widgets()
@@ -15,21 +10,17 @@ class Application(Frame):
 
     def create_widgets(self):
         # create instruction label
-        Label(self, text = "I'm thinking of a number between 1 and 100.").grid(row = 0, column = 0, sticky = W)
+        Label(self, text="There is a number between 1 and 100.").grid(row=0, column=0, sticky=W)
         Label(self, text = "Try and guess it in as few attempts as possible!").grid(row = 1, column = 0, sticky = W)
-
-        # create guess input prompt label and entry
-        Label(self, text = "Take a guess:").grid(row = 2, column = 0, sticky = W)
+        # creating input for user
         self.guess_ent = Entry(self)
-        self.guess_ent.grid(row = 2, column = 1, sticky = W)
-
-        # create start game prompt label and submit button
-        Label(self, text = "Press submit to start the game!").grid(row = 3, column = 0, sticky = W)
-        Button(self, text = "Submit", command = self.run_game).grid(row = 3, column = 1, sticky = W)
-
-        # create computer feedback text box
-        self.text = Text(self, width = 75, height = 10, wrap = WORD)
-        self.text.grid(row = 4, column = 0, columnspan = 4)
+        self.guess_ent.grid(row=2,column=1,sticky=W)
+        # create the submit button
+        Label(self, text="Click Submit!").grid(row=3,column=0,sticky=W)
+        Button(self, text='SUBMIT', command=self.run_game).grid(row=3,column=1,sticky=W)
+        # create the computer feedback text
+        self.text = Text(self, width=75, height=10, wrap=WORD)
+        self.text.grid(row=4, column=0, columnspan=4)
 
     def run_game(self):
         guess = int(self.guess_ent.get())
@@ -51,8 +42,8 @@ class Application(Frame):
             self.text.delete(0.0, END)
             self.text.insert(0.0, print_text)
 
-# main
 root = Tk()
-root.title("Guess my number game!")
+root.title("Guessing Game")
 app = Application(root)
 root.mainloop()
+#

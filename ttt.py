@@ -184,16 +184,7 @@ class Game(Tk):
             self.gamestate = FIRST_PLAYER
 
     def new_move(self, player, grid_x, grid_y):
-        """
-        player is either X or O
-        x and y are 0-based grid coordinates
 
-          0 1 2
-        0 _|_|_
-        1 _|_|_
-        2  | |
-
-        """
         if player == X:
             self.draw_X(grid_x, grid_y)
             self.board[grid_y][grid_x] = X
@@ -224,8 +215,6 @@ class Game(Tk):
     def draw_O(self, grid_x, grid_y):
         """
         draw an O symbol at x, y in the grid
-
-        note : a big outline value appears to cause a visual glitch in Tkinter
         """
 
         x = self.gtpix(grid_x)
